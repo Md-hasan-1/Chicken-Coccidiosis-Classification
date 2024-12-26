@@ -9,3 +9,9 @@ data:
     train_data_dir: artifacts/data/ingestion/train
     val_data_dir: artifacts/data/ingestion/val
 
+  preprocessing:
+    dir_path: artifacts/data/preprocessing
+    train_data_dir: artifacts/data/preprocessing/train/
+    val_data_dir: artifacts/data/preprocessing/val/
+    test_data_dir: artifacts/data/preprocessing/test/
+

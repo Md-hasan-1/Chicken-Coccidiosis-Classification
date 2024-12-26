@@ -12,5 +12,14 @@ class DataIngestionConfig:
     testing_data_dir = config.testing_data_dir
     train_data_dir = config.train_data_dir
     val_data_dir = config.val_data_dir
-    
+
+
+@dataclass
+class DataPreprocessingConfig:
+    config = read_yaml("config/config.yaml").data.preprocessing
+    dir_path = config.dir_path
+    train_data_dir = config.train_data_dir
+    val_data_dir = config.val_data_dir
+    test_data_dir = config.test_data_dir
+
 
