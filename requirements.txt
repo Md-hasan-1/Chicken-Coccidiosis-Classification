@@ -1,4 +1,6 @@
+ipykernel
 tensorflow
+keras
 bentoml
 mlflow
 keras-tuner

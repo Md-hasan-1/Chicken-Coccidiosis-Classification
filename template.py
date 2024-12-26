@@ -5,10 +5,10 @@ from pathlib import Path
 path_list = [
     ".github/workflows/main.yaml",
     "config/config.yaml",
-    "notebook/stage_01_data_ingestion.py",
-    "notebook/stage_02_data_transformation.py",
-    "notebook/stage_03_model_training.py",
-    "notebook/stage_04_model_evaluation.py",
+    "notebook/stage_01_data_ingestion.ipynb",
+    "notebook/stage_02_data_transformation.ipynb",
+    "notebook/stage_03_model_training.ipynb",
+    "notebook/stage_04_model_evaluation.ipynb",
     "src/__init__.py",
     "src/components/__init__.py",
     "src/components/data/__init__.py",
@@ -17,11 +17,13 @@ path_list = [
     "src/components/model/__init__.py",
     "src/components/model/training.py",
     "src/components/model/evaluation.py",
+    "src/config/configuration.py",
     "src/logger/__init__.py",
     "src/exception/__init__.py",
     "src/utils/__init__.py",
     "templates/index.html",
     "dvc.yaml",
+    "score.yaml",
     "requirements.txt",
     "setup.py",
     "README.md",
@@ -49,7 +51,7 @@ with open("pyproject.toml", "wt") as file_obj:
     file_obj.write(pyproject_data)
 
 with open(".gitignore", "a") as file_obj:
-    file_obj.write("pyproject.toml\nnotebook/\nlogs/\n")
+    file_obj.write("pyproject.toml\nnotebook/\nlogs/\nartifacts/\n")
 try:
     file_list = ["logger", "exception"]
     for file_name in file_list:
