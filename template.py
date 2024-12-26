@@ -50,13 +50,15 @@ with open("pyproject.toml", "wt") as file_obj:
 
 with open(".gitignore", "a") as file_obj:
     file_obj.write("pyproject.toml\nnotebook/\nlogs/\n")
-
-file_list = ["logger", "exception"]
-for file_name in file_list:
-    with open(Path(f"C:\Users\hasan\Documents\{file_name}.py"), "rt") as file:
-        content = file.readlines()
-    with open(Path(f"src/{file_name}/__init__.py", "w")) as file_obj:
-        file_obj.writelines(content)
+try:
+    file_list = ["logger", "exception"]
+    for file_name in file_list:
+        with open(f"C:/Users/hasan/Documents/{file_name}.py", "rt") as file:
+            content = file.readlines()
+        with open(f"src/{file_name}/__init__.py", "w") as file_obj:
+            file_obj.writelines(content)
+except:
+    print("Unable to write logger and exception")
 
 print("""
 Task successfully completed. 👌
