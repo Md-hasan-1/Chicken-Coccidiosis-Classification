@@ -1,6 +1,5 @@
 import os
 from pathlib import Path
-from shutil import copytree
 
 
 path_list = [
@@ -26,7 +25,8 @@ path_list = [
     "requirements.txt",
     "setup.py",
     "README.md",
-    ".gitignore"
+    ".gitignore",
+    "pyproject.toml"
 ]
 
 for filepath in path_list:
@@ -40,6 +40,23 @@ for filepath in path_list:
     if (not os.path.exists(filepath)):
         with open(filepath, "w") as f:
             pass
+
+pyproject_data = """[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+"""
+with open("pyproject.toml", "wt") as file_obj:
+    file_obj.write(pyproject_data)
+
+with open(".gitignore", "a") as file_obj:
+    file_obj.write("pyproject.toml\nnotebook/\nlogs/\n")
+
+file_list = ["logger", "exception"]
+for file_name in file_list:
+    with open(Path(f"C:\Users\hasan\Documents\{file_name}.py"), "rt") as file:
+        content = file.readlines()
+    with open(Path(f"src/{file_name}/__init__.py", "w")) as file_obj:
+        file_obj.writelines(content)
 
 print("""
 Task successfully completed. 👌

@@ -169,10 +169,3 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
-
-venv/
-venv
-src/Chicken_Coccidiosis_Classification.egg-info/
-notebook/
-src/__pycache__/
-logs/
