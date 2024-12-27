@@ -7,6 +7,7 @@ from src.utils import create_dirs
 from urllib.request import urlparse
 from dataclasses import dataclass
 from src.logger import logging
+from retrying import retry
 from pathlib import Path
 import mlflow, bentoml
 import numpy as np
@@ -18,6 +19,8 @@ import os
 
 @dataclass
 class ModelEvaluation:
+
+    @retry(stop_max_attempt_number=1, wait_fixed=2000)  # Retries 5 times with 2 seconds delay
     def start(self):
         try:
             mt = ModelTrainer()
