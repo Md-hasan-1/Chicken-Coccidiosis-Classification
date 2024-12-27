@@ -176,3 +176,5 @@ pyproject.toml
 notebook/
 logs/
 artifacts/
+mlruns/
+untitled_project/

@@ -15,3 +15,10 @@ data:
     val_data_dir: artifacts/data/preprocessing/val/
     test_data_dir: artifacts/data/preprocessing/test/
 
+
+callbacks:
+  dir_path: artifacts/model/callbacks
+  tensorboard_dir: artifacts/model/callbacks/tensorboard_dir
+
+
+  

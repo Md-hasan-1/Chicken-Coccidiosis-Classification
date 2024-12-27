@@ -24,7 +24,6 @@ path_list = [
     "src/utils/__init__.py",
     "templates/index.html",
     "dvc.yaml",
-    "score.yaml",
     "requirements.txt",
     "setup.py",
     "README.md",

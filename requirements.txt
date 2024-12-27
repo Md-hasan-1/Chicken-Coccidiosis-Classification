@@ -7,4 +7,5 @@ keras-tuner
 python-box
 PyYAML
 dvc
+dagshub
 # -e .
