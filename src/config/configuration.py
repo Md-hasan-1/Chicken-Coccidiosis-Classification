@@ -23,3 +23,8 @@ class DataPreprocessingConfig:
     test_data_dir = config.test_data_dir
 
 
+@dataclass
+class ModelEvaluationConfig:
+    config = read_yaml("config/config.yaml")
+    tensorboard_dir = config.callbacks.tensorboard_dir
+
