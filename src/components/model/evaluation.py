@@ -20,7 +20,7 @@ import os
 @dataclass
 class ModelEvaluation:
 
-    @retry(stop_max_attempt_number=1, wait_fixed=2000)  # Retries 5 times with 2 seconds delay
+    @retry(stop_max_attempt_number=2, wait_fixed=10000)  # Retries 1 times with 2 seconds delay
     def start(self):
         try:
             mt = ModelTrainer()
@@ -104,7 +104,7 @@ class ModelEvaluation:
                                     )
 
                 # saving model locally
-                bentoml.models.save_model("VGG16", best_model)
+                bentoml.keras.save_model("VGG16", best_model)
 
             logging.info("Model Evaluation completed")
         except Exception as e:
