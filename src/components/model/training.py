@@ -3,7 +3,7 @@ from keras import layers, models # type: ignore
 from src.exception import CustomException
 from src.logger import logging
 from dataclasses import dataclass
-import tensorflow as tf
+import keras
 import sys
 
 
@@ -23,7 +23,7 @@ class ModelTrainer:
                 ])
                 
                 model.compile(
-                    optimizer=tf.keras.optimizers.Adam(learning_rate=hp.Choice('learning_rate', [1e-2, 1e-3, 1e-4])),
+                    optimizer=keras.optimizers.Adam(learning_rate=hp.Choice('learning_rate', [1e-2, 1e-3, 1e-4])),
                     loss='binary_crossentropy',
                     metrics=['accuracy']
                 )
