@@ -17,6 +17,7 @@ path_list = [
     "src/components/model/__init__.py",
     "src/components/model/training.py",
     "src/components/model/evaluation.py",
+    "src/components/model/prediction.py",
     "src/config/__init__.py",
     "src/config/configuration.py",
     "src/logger/__init__.py",
@@ -26,6 +27,8 @@ path_list = [
     "dvc.yaml",
     "requirements.txt",
     "setup.py",
+    "app.py",
+    "main.py",
     "README.md",
     ".gitignore",
     "pyproject.toml"

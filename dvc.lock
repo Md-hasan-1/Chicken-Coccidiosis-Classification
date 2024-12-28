@@ -1,0 +1,36 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src\components\data\ingestion.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 11a45ba0b9194492d08c3a0de4a9d9de
+      size: 830
+    - path: src\components\data\ingestion.py
+      hash: md5
+      md5: 0ef63774ca4ebf9a06a9dd9394cc76b2
+      size: 5718
+    outs:
+    - path: artifacts\data\ingestion\raw\Chicken-fecal-images
+      hash: md5
+      md5: 9e1f8dd2eae3c29e9d635df89d438ae4.dir
+      size: 12207807
+      nfiles: 390
+  data_preprocessing:
+    cmd: python src\components\data\preprocessing.py
+    deps:
+    - path: config/config.yaml
+      hash: md5
+      md5: 11a45ba0b9194492d08c3a0de4a9d9de
+      size: 830
+    - path: src\components\data\preprocessing.py
+      hash: md5
+      md5: 9256c08fff68120156b5acacb9e8d43a
+      size: 3220
+    outs:
+    - path: artifacts\data\preprocessing
+      hash: md5
+      md5: acc7969cfb7c40bf91cac3136c4d75cb.dir
+      size: 204720208
+      nfiles: 6

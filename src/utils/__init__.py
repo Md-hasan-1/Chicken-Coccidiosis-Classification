@@ -6,6 +6,7 @@ import pickle
 import yaml
 import sys
 import os
+import base64
 
 
 
@@ -76,3 +77,9 @@ def load_object(path:str)-> object:
         logging.error(e)
         raise CustomException(e, sys)
     
+
+def decodeImage(imgstring, fileName):
+    imgdata = base64.b64decode(imgstring)
+    with open(fileName, 'wb') as f:
+        f.write(imgdata)
+        f.close()

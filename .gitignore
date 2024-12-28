@@ -178,3 +178,11 @@ logs/
 artifacts/
 mlruns/
 untitled_project/
+pyproject.toml
+notebook/
+logs/
+artifacts/
+pyproject.toml
+notebook/
+logs/
+artifacts/

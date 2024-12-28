@@ -9,4 +9,6 @@ PyYAML
 dvc
 dagshub
 retrying
+flask
+flask_cors
 # -e .
