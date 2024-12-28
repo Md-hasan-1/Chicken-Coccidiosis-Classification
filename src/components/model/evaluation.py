@@ -29,7 +29,7 @@ class ModelEvaluation:
             tuner = keras_tuner.RandomSearch(
             build_model,
             objective='val_loss',
-            max_trials=1
+            max_trials=20
             )
 
             # getting path for train, val and test data
@@ -50,11 +50,11 @@ class ModelEvaluation:
 
             create_dirs(ModelEvaluationConfig.tensorboard_dir) # creating tensorboard_dir
             
-            early_stoping = EarlyStopping(patience=1, restore_best_weights=True)
+            early_stoping = EarlyStopping(patience=10, restore_best_weights=True)
             tensorboard = TensorBoard(ModelEvaluationConfig.tensorboard_dir, histogram_freq=1)
 
             tuner.search(X_train, y_train, 
-                        epochs=1,
+                        epochs=50,
                         validation_data=(X_val, y_val),
                         callbacks = [early_stoping, tensorboard]
                         )
@@ -63,7 +63,8 @@ class ModelEvaluation:
                 best_model = tuner.get_best_models()[0]
                 test_loss, test_accuracy = best_model.evaluate(X_test, y_test)
                 best_hps = tuner.get_best_hyperparameters(num_trials=1)[0]
-                if test_accuracy < 0.1:
+                
+                if test_accuracy < 0.6:
                     model = tuner.hypermodel.build(best_hps)
                     history = model.fit(X_train, y_train, epochs=2, validation_split=(X_val, y_val))
                     
