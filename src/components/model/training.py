@@ -23,7 +23,7 @@ class ModelTrainer:
                 ])
                 
                 model.compile(
-                    optimizer=keras.optimizers.Adam(learning_rate=hp.Choice('learning_rate', [1e-2, 1e-3, 1e-4])),
+                    optimizer="adam",
                     loss='binary_crossentropy',
                     metrics=['accuracy']
                 )
