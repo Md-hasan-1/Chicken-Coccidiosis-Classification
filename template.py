@@ -18,6 +18,7 @@ path_list = [
     "src/components/model/training.py",
     "src/components/model/evaluation.py",
     "src/components/model/prediction.py",
+    "src/pipeline/__init__.py",
     "src/config/__init__.py",
     "src/config/configuration.py",
     "src/logger/__init__.py",

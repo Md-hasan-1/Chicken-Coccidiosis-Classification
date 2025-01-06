@@ -143,8 +143,3 @@ class DataIngestion:
             logging.error(e)
             raise CustomException(e, sys)
 
-
-if __name__=="__main__":
-    obj = DataIngestion()
-    obj.start()
-

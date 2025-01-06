@@ -28,7 +28,7 @@ class DataPreprocessing:
             raise CustomException(e, sys)
     
 
-    def start(self, inputs)-> None:
+    def start(self)-> None:
         """Description: transform data for input of VGG16
 
         Args:
@@ -40,6 +40,11 @@ class DataPreprocessing:
         "value" is saving path were data will be saved after transformation.
         """
         try:
+            inputs = {
+                DataIngestionConfig.train_data_dir:DataPreprocessingConfig.train_data_dir, 
+                DataIngestionConfig.val_data_dir:DataPreprocessingConfig.val_data_dir, 
+                DataIngestionConfig.testing_data_dir:DataPreprocessingConfig.test_data_dir 
+            }
             logging.info("Data Preprocessing initiated")
             create_dirs(DataPreprocessingConfig.dir_path) # creating main directory
             
@@ -76,14 +81,4 @@ class DataPreprocessing:
         except Exception as e:
             logging.error(e)
             raise CustomException(e, sys)
-
-
-if __name__=="__main__":
-    kwarg = {
-        DataIngestionConfig.train_data_dir:DataPreprocessingConfig.train_data_dir, 
-        DataIngestionConfig.val_data_dir:DataPreprocessingConfig.val_data_dir, 
-        DataIngestionConfig.testing_data_dir:DataPreprocessingConfig.test_data_dir
-    }
-    obj = DataPreprocessing()
-    obj.start(inputs=kwarg)
 

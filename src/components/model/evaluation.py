@@ -29,7 +29,7 @@ class ModelEvaluation:
             tuner = keras_tuner.RandomSearch(
             build_model,
             objective='val_loss',
-            max_trials=20
+            max_trials=1 # 20 default
             )
 
             # getting path for train, val and test data
@@ -54,7 +54,7 @@ class ModelEvaluation:
             tensorboard = TensorBoard(ModelEvaluationConfig.tensorboard_dir, histogram_freq=1)
 
             tuner.search(X_train, y_train, 
-                        epochs=50,
+                        epochs=1, # 50 default
                         validation_data=(X_val, y_val),
                         callbacks = [early_stoping, tensorboard]
                         )
@@ -66,14 +66,15 @@ class ModelEvaluation:
                 
                 if test_accuracy < 0.6:
                     model = tuner.hypermodel.build(best_hps)
-                    history = model.fit(X_train, y_train, epochs=2, validation_split=(X_val, y_val))
+                    history = model.fit(X_train, y_train, epochs=1, # 2 default
+                                        validation_split=(X_val, y_val))
                     
                     val_acc_per_epoch = history.history['val_accuracy']
                     best_epoch = val_acc_per_epoch.index(max(val_acc_per_epoch)) + 1
 
                     best_model.fit(
                         X_train, y_train,
-                        epochs=best_epoch,
+                        epochs=1, # best_epoch defalut
                         validation_split=(X_val, y_val),
                         callbacks = [early_stoping, tensorboard]
                     )
@@ -111,9 +112,4 @@ class ModelEvaluation:
         except Exception as e:
             logging.error(e)
             raise CustomException(e, sys)
-        
-
-if __name__=="__main__":
-    obj = ModelEvaluation()
-    obj.start()
 

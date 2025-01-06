@@ -1,58 +1,68 @@
 schema: '2.0'
 stages:
   data_ingestion:
-    cmd: python src\components\data\ingestion.py
+    cmd: python src/pipeline/stage_01_data_ingestion.py
     deps:
     - path: config/config.yaml
       hash: md5
       md5: 11a45ba0b9194492d08c3a0de4a9d9de
       size: 830
-    - path: src\components\data\ingestion.py
+    - path: src/pipeline/stage_01_data_ingestion.py
       hash: md5
-      md5: 0ef63774ca4ebf9a06a9dd9394cc76b2
-      size: 5718
+      md5: d9d74a4ab94ce7cb6bf1a3c72ad3271a
+      size: 478
     outs:
-    - path: artifacts\data\ingestion\raw\Chicken-fecal-images
+    - path: artifacts/data/ingestion/raw/Chicken-fecal-images
       hash: md5
       md5: 9e1f8dd2eae3c29e9d635df89d438ae4.dir
       size: 12207807
       nfiles: 390
   data_preprocessing:
-    cmd: python src\components\data\preprocessing.py
+    cmd: python src/pipeline/stage_02_data_preprocessing.py
     deps:
     - path: config/config.yaml
       hash: md5
       md5: 11a45ba0b9194492d08c3a0de4a9d9de
       size: 830
-    - path: src\components\data\preprocessing.py
+    - path: src/pipeline/stage_02_data_preprocessing.py
       hash: md5
-      md5: 9256c08fff68120156b5acacb9e8d43a
-      size: 3220
+      md5: 2afee8a74667be794f364a77587a3823
+      size: 548
     outs:
-    - path: artifacts\data\preprocessing
+    - path: artifacts/data/preprocessing
       hash: md5
       md5: acc7969cfb7c40bf91cac3136c4d75cb.dir
       size: 204720208
       nfiles: 6
   evaluation:
-    cmd: python src\components\model\evaluation.py
+    cmd: python src/pipeline/stage_03_train_and_eval.py
     deps:
-    - path: artifacts\data\preprocessing
+    - path: artifacts/data/preprocessing/test
       hash: md5
-      md5: acc7969cfb7c40bf91cac3136c4d75cb.dir
-      size: 204720208
-      nfiles: 6
+      md5: 14f73d652ad5f63bb2a608e5aa8a8480.dir
+      size: 60211856
+      nfiles: 2
+    - path: artifacts/data/preprocessing/train
+      hash: md5
+      md5: 2879b3205cc5fc94b46c17ef0fd7c42b.dir
+      size: 120423456
+      nfiles: 2
+    - path: artifacts/data/preprocessing/val
+      hash: md5
+      md5: 9280c4bf918398d1cf9d3fd5657b02f4.dir
+      size: 24084896
+      nfiles: 2
     - path: config/config.yaml
       hash: md5
       md5: 11a45ba0b9194492d08c3a0de4a9d9de
       size: 830
-    - path: src\components\model\evaluation.py
+    - path: src/pipeline/stage_03_train_and_eval.py
       hash: md5
-      md5: 88d1279d2a2268291cf50ff7203aa281
-      size: 5161
+      md5: bb4166614f508acc226a9f7bc74b49db
+      size: 538
     outs:
-    - path: artifacts\model\callbacks\tensorboard_dir
+    - path: artifacts/model/callbacks/tensorboard_dir
       hash: md5
-      md5: bf79e9053b4277e0825a9cdd2cd60f23.dir
-      size: 15836074
-      nfiles: 57
+      md5: d751713988987e9331980363e24189ce.dir
+      size: 0
+      nfiles: 0
