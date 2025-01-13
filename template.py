@@ -6,21 +6,10 @@ path_list = [
     ".github/workflows/main.yaml",
     "config/config.yaml",
     "notebook/stage_01_data_ingestion.ipynb",
-    "notebook/stage_02_data_preprocessing.ipynb",
-    "notebook/stage_03_model_training.ipynb",
-    "notebook/stage_04_model_evaluation.ipynb",
     "src/__init__.py",
     "src/components/__init__.py",
-    "src/components/data/__init__.py",
-    "src/components/data/ingestion.py",
-    "src/components/data/preprocessing.py",
-    "src/components/model/__init__.py",
-    "src/components/model/training.py",
-    "src/components/model/evaluation.py",
-    "src/components/model/prediction.py",
     "src/pipeline/__init__.py",
-    "src/config/__init__.py",
-    "src/config/configuration.py",
+    "src/configuration/__init__.py",
     "src/logger/__init__.py",
     "src/exception/__init__.py",
     "src/utils/__init__.py",
@@ -51,21 +40,32 @@ pyproject_data = """[build-system]
 requires = ["setuptools>=64", "wheel"]
 build-backend = "setuptools.build_meta"
 """
+
+# content for pyproject.toml
 with open("pyproject.toml", "wt") as file_obj:
     file_obj.write(pyproject_data)
 
+# content for .gitignore
 with open(".gitignore", "a") as file_obj:
     file_obj.write("pyproject.toml\nnotebook/\nlogs/\nartifacts/\n")
+
+# content for requirements.txt
+with open("requirements.txt", "w") as file_obj:
+    file_obj.write("mlflow\ndvc\nbentoml\nipykernel")
+
 try:
-    file_list = ["logger", "exception"]
+    file_list = ["logger", "exception", "setup.py"]
     for file_name in file_list:
         with open(f"C:/Users/hasan/Documents/{file_name}.py", "rt") as file:
             content = file.readlines()
         with open(f"src/{file_name}/__init__.py", "w") as file_obj:
             file_obj.writelines(content)
+    print("""
+          Task successfully completed. 👌
+          """)
 except:
-    print("Unable to write logger and exception")
+    print(f"Unable to write {file_name} and further")
 
 print("""
-Task successfully completed. 👌
+-----------------X-----------------
 """)
