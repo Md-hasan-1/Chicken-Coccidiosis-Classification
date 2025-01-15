@@ -54,19 +54,24 @@ with open("requirements.txt", "w") as file_obj:
     file_obj.write("mlflow\ndvc\nbentoml\nipykernel")
 
 try:
-    file_list = ["logger", "exception", "setup.py"]
+    file_list = ["logger", "exception", "setup"]
     for file_name in file_list:
         with open(f"C:/Users/hasan/Documents/{file_name}.py", "rt") as file:
             content = file.readlines()
-        with open(f"src/{file_name}/__init__.py", "w") as file_obj:
-            file_obj.writelines(content)
+        if file_name != "setup":
+            with open(f"src/{file_name}/__init__.py", "w") as file_obj:
+                file_obj.writelines(content)
+        else:
+            with open(f"{file_name}.py", "w") as file_obj:
+                file_obj.writelines(content)
+
     print("""
           Task successfully completed. 👌
           """)
 except:
     string = "Unable to write files please write manually."
     skull = "💀"
-    print(f"\n{skull*len(string)}\n{string}\n{skull*len(string)}\n")
+    print(f"\n{skull*len(string)}\n\n{string}\n\n{skull*len(string)}\n")
 
 print("""
 -----------------X-----------------
