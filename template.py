@@ -64,7 +64,9 @@ try:
           Task successfully completed. 👌
           """)
 except:
-    print(f"Unable to write {file_name} and further")
+    string = "Unable to write files please write manually."
+    skull = "💀"
+    print(f"\n{skull*len(string)}\n{string}\n{skull*len(string)}\n")
 
 print("""
 -----------------X-----------------
